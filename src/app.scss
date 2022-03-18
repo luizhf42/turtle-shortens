@@ -1,0 +1,20 @@
+@mixin flex($direction: column, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav a {
+  &:hover,
+  &.router-link-active,
+  &.router-link-exact-active {
+    font-weight: bold;
+  }
+}
