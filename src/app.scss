@@ -9,12 +9,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
+  font-family: inherit;
+  color: white;
 }
 
-nav a {
-  &:hover,
-  &.router-link-active,
-  &.router-link-exact-active {
-    font-weight: bold;
-  }
+#app {
+  font-family: 'Lato', sans-serif;
+  min-height: 100vh;
+  background: #020f21;
 }

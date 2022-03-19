@@ -1,18 +1,17 @@
 <template>
-  <nav>
-    <router-link to="/">home</router-link>
-    |
-    <router-link to="/links">links</router-link>
-  </nav>
+  <Header />
   <router-view />
 </template>
 
 <script lang="ts">
+import { defineComponent } from "@vue/runtime-core";
 import "./app.scss";
-
-import { computed, defineComponent, ref } from "vue";
+import Header from "./components/Header.vue";
 
 export default defineComponent({
   setup() {},
+  components: {
+    Header,
+  },
 });
 </script>
