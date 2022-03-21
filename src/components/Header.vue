@@ -37,14 +37,14 @@ export default defineComponent({
 <style lang="scss" scoped>
 @use "../app.scss";
 header {
-  margin: auto;
+  margin: 0 auto 40px;
   height: auto;
-  width: 95%;
+  width: 92%;
   @include app.flex(row, space-between);
 
   .logo {
-    height: 150px;
-    width: 318px;
+    height: 100px;
+    width: min(330px, 95%);
     @include app.flex(row, space-around);
 
     img {
@@ -52,7 +52,8 @@ header {
     }
 
     p {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
+      text-align: center;
     }
   }
 
@@ -62,7 +63,7 @@ header {
       width: 200px;
       li {
         a {
-          font-size: 1.25rem;
+          font-size: 1.4rem;
           text-decoration: none;
           &:hover {
             border-bottom: 1px solid #ffffff;
@@ -78,8 +79,9 @@ header {
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 600px) {
   header {
+    width: 100%;
     @include app.flex();
   }
 }
