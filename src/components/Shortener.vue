@@ -3,18 +3,83 @@
     <h1>Easily shortened URLs!</h1>
     <p>Just paste the URL, submit and it's done!</p>
 
-    <form>
-      <input type="url" placeholder="Your long URL" />
+    <form @submit.prevent="shorten">
+      <input type="url" placeholder="Your long URL" v-model="url" />
       <button>Shorten it!</button>
     </form>
+    <div class="response">
+      <div v-if="shortenedLink && !hasRequestError">
+        <div class="link">
+          <a :href="shortenedLink" target="_blank" rel="noopener noreferrer">{{
+            shortenedLink
+          }}</a>
+          🐢
+        </div>
+        <img
+          :src="clipboard"
+          alt=""
+          aria-label="Copy to clipboard"
+          @click="copyLink($event)"
+          v-tooltip="tooltip"
+        />
+      </div>
+      <p v-if="!shortenedLink && !hasRequestError">
+        Your short link goes here!
+      </p>
+
+      <p v-if="hasRequestError" class="error">An error occurred!</p>
+    </div>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import axios from "../services/axios";
+import clipboard from "../assets/clipboard.svg";
+import clipboardCheck from "../assets/clipboard-check.svg";
 
 export default defineComponent({
-  setup() {},
+  setup() {
+    const tooltip = ref("Copy to clipboard!");
+    const url = ref("");
+    const shortenedLink = ref("");
+    const hasRequestError = ref(false);
+
+    const shorten = async () => {
+      try {
+        const { data } = await axios.post("/shorten", {
+          long_url: url.value,
+        });
+
+        shortenedLink.value = data.link;
+        hasRequestError.value = false;
+      } catch (error) {
+        console.error(error);
+        hasRequestError.value = true;
+      }
+    };
+
+    const copyLink = (event) => {
+      navigator.clipboard.writeText(shortenedLink.value);
+      tooltip.value = "Copied!";
+      event.target.src = clipboardCheck;
+
+      setTimeout(() => {
+        event.target.src = clipboard;
+        tooltip.value = "Copy to clipboard!";
+      }, 5000);
+    };
+    return {
+      shorten,
+      copyLink,
+      url,
+      shortenedLink,
+      hasRequestError,
+      clipboard,
+      clipboardCheck,
+      tooltip,
+    };
+  },
 });
 </script>
 
@@ -30,13 +95,13 @@ export default defineComponent({
     margin: 15px;
   }
 
-  p {
+  > p {
     font-size: 1.3rem;
-    margin: 10px;
+    margin: 10px 10px 20px;
   }
 
   form {
-    height: 45px;
+    height: 50px;
     background: #0c0c0c;
     border-radius: 10px 10px 0 0;
     width: min(400px, 95%);
@@ -44,23 +109,26 @@ export default defineComponent({
     gap: 10px;
 
     input {
-      width: 60%;
+      font-size: 1.1rem;
+      width: 65%;
       padding: 5px;
       border-radius: 7px;
-      border: 2px solid app.$form-orange;
+      border: app.$input-border;
       caret-color: #0c0c0c;
       color: #0c0c0c;
 
       &:focus {
-        outline: 2px solid app.$form-orange;
-        border: 1px solid #e8e8e8;
+        outline: 0;
+        border: 2px solid app.$form-orange;
       }
     }
 
     button {
+      font-size: 1.1rem;
+
       width: 30%;
       border-radius: 7px;
-      height: 30px;
+      height: 35px;
       border: 0;
       background: app.$form-orange;
       transition: 0.3s;
@@ -71,5 +139,45 @@ export default defineComponent({
       }
     }
   }
+
+  .response {
+    @extend form;
+    justify-content: space-between;
+    border-radius: 0 0 10px 10px;
+
+    > div {
+      @include app.flex(row, space-between);
+      margin: auto;
+      width: 95%;
+      height: 100%;
+
+      .link {
+        text-align: left;
+        width: 80%;
+        a {
+          color: app.$form-orange;
+          margin-right: 5px;
+          font-size: 1.2rem;
+        }
+      }
+
+      img {
+        cursor: pointer;
+        height: 50%;
+      }
+    }
+
+    p {
+      text-align: center;
+      width: 100%;
+      font-size: 1.3rem;
+    }
+
+    .error {
+      color: app.$error;
+    }
+  }
 }
+
 </style>
+

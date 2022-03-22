@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="logo">
-      <img :src="turtleImg" alt="" />
+      <img :src="turtle" alt="" />
       <p>The Turtle shortens!</p>
     </div>
 
@@ -25,10 +25,8 @@ import turtle from "../assets/turtle.png";
 
 export default defineComponent({
   setup() {
-    const turtleImg = turtle;
-
     return {
-      turtleImg,
+      turtle,
     };
   },
 });
