@@ -28,17 +28,22 @@ $error: #ff2727;
   font-family: "Lato", sans-serif;
 }
 
-.waves {
-  margin-top: -30px;
+@media screen and (max-width: 600px) {
+  #app {
+    header {
+      width: 100%;
+      @include flex();
+    }
+
+    .links {
+      height: calc(100vh - 210px);
+    }
+  }
 }
 
 @media screen and (max-width: 375px) {
   * {
     font-size: 15px;
-  }
-
-  .waves {
-    margin-top: -15px;
   }
 }
 
@@ -47,5 +52,3 @@ $error: #ff2727;
     font-size: 13px;
   }
 }
-
-

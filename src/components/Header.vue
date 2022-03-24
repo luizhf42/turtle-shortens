@@ -76,11 +76,4 @@ header {
     }
   }
 }
-
-@media screen and (max-width: 600px) {
-  header {
-    width: 100%;
-    @include app.flex();
-  }
-}
 </style>

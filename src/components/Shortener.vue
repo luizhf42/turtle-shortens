@@ -37,6 +37,9 @@ import { defineComponent, ref } from "vue";
 import axios from "../services/axios";
 import clipboard from "../assets/clipboard.svg";
 import clipboardCheck from "../assets/clipboard-check.svg";
+import { setShortenedLinks } from "../services/localStorage";
+
+export let links = JSON.parse(localStorage.getItem("links"));
 
 export default defineComponent({
   setup() {
@@ -50,6 +53,13 @@ export default defineComponent({
         const { data } = await axios.post("/shorten", {
           long_url: url.value,
         });
+
+        setShortenedLinks({
+          shortURL: data.link,
+          longURL: data.long_url,
+        });
+
+        links = JSON.parse(localStorage.getItem("links"));
 
         shortenedLink.value = data.link;
         hasRequestError.value = false;
