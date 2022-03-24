@@ -6,7 +6,7 @@
 }
 
 $input-border: 1px solid #0a397b;
-$form-orange: #e18700;
+$orange: #e18700;
 $button-hover: #ba7002;
 $error: #ff2727;
 
@@ -24,19 +24,28 @@ $error: #ff2727;
   min-height: 100vh;
   background: #001b40;
 }
-
 .v-popper--theme-tooltip .v-popper__inner {
   font-family: "Lato", sans-serif;
+}
+
+.waves {
+  margin-top: -30px;
 }
 
 @media screen and (max-width: 375px) {
   * {
     font-size: 15px;
   }
-}
 
-@media screen and (max-width: 300px) {
-  * {
-    font-size: 14px;
+  .waves {
+    margin-top: -15px;
   }
 }
+
+@media screen and (max-width: 315px) {
+  * {
+    font-size: 13px;
+  }
+}
+
+

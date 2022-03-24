@@ -101,17 +101,19 @@ export default defineComponent({
   }
 
   form {
-    height: 50px;
+    height: 60px;
+    box-shadow: 0 0 5px black;
     background: #0c0c0c;
     border-radius: 10px 10px 0 0;
-    width: min(400px, 95%);
+    width: min(500px, 95%);
     @include app.flex(row);
     gap: 10px;
 
     input {
       font-size: 1.1rem;
       width: 65%;
-      padding: 5px;
+      height: 40px;
+      padding: 8px;
       border-radius: 7px;
       border: app.$input-border;
       caret-color: #0c0c0c;
@@ -119,7 +121,7 @@ export default defineComponent({
 
       &:focus {
         outline: 0;
-        border: 2px solid app.$form-orange;
+        border: 2px solid app.$orange;
       }
     }
 
@@ -128,9 +130,9 @@ export default defineComponent({
 
       width: 30%;
       border-radius: 7px;
-      height: 35px;
+      height: 40px;
       border: 0;
-      background: app.$form-orange;
+      background: app.$orange;
       transition: 0.3s;
       cursor: pointer;
 
@@ -155,22 +157,24 @@ export default defineComponent({
         text-align: left;
         width: 80%;
         a {
-          color: app.$form-orange;
+          color: app.$orange;
           margin-right: 5px;
-          font-size: 1.2rem;
+          font-size: 1.3rem;
         }
       }
 
       img {
         cursor: pointer;
         height: 50%;
+        // Prevent waves svg from blocking the img
+        z-index: 2;
       }
     }
 
     p {
       text-align: center;
       width: 100%;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
     }
 
     .error {
@@ -178,6 +182,5 @@ export default defineComponent({
     }
   }
 }
-
 </style>
 
