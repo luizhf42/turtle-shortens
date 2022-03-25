@@ -9,10 +9,13 @@ import { defineComponent } from "@vue/runtime-core";
 import "./app.scss";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
+import { onBeforeMount } from "vue";
 
 export default defineComponent({
   setup() {
-    localStorage.setItem("links", "[]");
+    onBeforeMount(() => {
+      localStorage.setItem("links", "[]");
+    });
   },
   components: {
     Header,
