@@ -33,13 +33,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import axios from "../services/axios";
 import clipboard from "../assets/clipboard.svg";
 import clipboardCheck from "../assets/clipboard-check.svg";
 import { setShortenedLinks } from "../services/localStorage";
 
-export let links = JSON.parse(localStorage.getItem("links"));
+export let links: Array<Object>;
 
 export default defineComponent({
   setup() {
@@ -79,6 +79,9 @@ export default defineComponent({
         tooltip.value = "Copy to clipboard!";
       }, 5000);
     };
+
+    onMounted(() => (links = JSON.parse(localStorage.getItem("links"))));
+    
     return {
       shorten,
       copyLink,
