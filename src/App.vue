@@ -12,7 +12,7 @@ import Footer from "./components/Footer.vue";
 
 export default defineComponent({
   setup() {
-    localStorage.setItem("links", "");
+    localStorage.setItem("links", "[]");
   },
   components: {
     Header,
