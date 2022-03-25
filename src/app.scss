@@ -85,7 +85,7 @@ $button-hover: #ba7002;
 
 @media screen and (max-height: 500px) {
   #app {
-    footer {
+    .shortener + footer {
       position: static;
       margin-top: 70px;
     }
