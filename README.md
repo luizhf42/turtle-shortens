@@ -26,7 +26,7 @@ An URL shortener with the Bit.ly API. It also haves a /links page, where the pre
 
 ### Links
 
-- [Live Site URL](https://turtle-shortens-luizhf42.vercel.app/)
+- [Live Site URL](https://turtle-shortens.vercel.app/)
 
 ## Process
 
