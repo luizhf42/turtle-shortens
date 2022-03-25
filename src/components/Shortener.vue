@@ -39,7 +39,7 @@ import clipboard from "../assets/clipboard.svg";
 import clipboardCheck from "../assets/clipboard-check.svg";
 import { setShortenedLinks } from "../services/localStorage";
 
-export let links: Array<Object>;
+export let links;
 
 export default defineComponent({
   setup() {
@@ -81,7 +81,7 @@ export default defineComponent({
     };
 
     onMounted(() => (links = JSON.parse(localStorage.getItem("links"))));
-    
+
     return {
       shorten,
       copyLink,
