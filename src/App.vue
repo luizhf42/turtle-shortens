@@ -11,7 +11,9 @@ import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 
 export default defineComponent({
-  setup() {},
+  setup() {
+    localStorage.setItem("links", "");
+  },
   components: {
     Header,
     Footer,
