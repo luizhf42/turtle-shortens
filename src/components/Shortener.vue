@@ -176,7 +176,6 @@ export default defineComponent({
       img {
         cursor: pointer;
         height: 50%;
-        // Prevent waves svg from blocking the img
         z-index: 2;
       }
     }
@@ -188,7 +187,7 @@ export default defineComponent({
     }
 
     .error {
-      color: app.$error;
+      color: app.$red;
     }
   }
 }

@@ -5,10 +5,11 @@
   align-items: $align;
 }
 
-$input-border: 1px solid #0a397b;
 $orange: #e18700;
+$red: #ff2727;
+$green: #00c500;
+$input-border: 1px solid #0a397b;
 $button-hover: #ba7002;
-$error: #ff2727;
 
 * {
   margin: 0;
@@ -17,11 +18,27 @@ $error: #ff2727;
   list-style: none;
   font-family: inherit;
   color: #fff;
+  scrollbar-width: auto;
+  scrollbar-color: $orange #ffffff;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $orange;
+    border-radius: 6px;
+    border: 3px solid #ffffff;
+  }
 }
 
 #app {
   font-family: "Lato", sans-serif;
-  min-height: 100vh;
+  height: 100vh;
   background: #001b40;
 }
 .v-popper--theme-tooltip .v-popper__inner {
@@ -37,6 +54,10 @@ $error: #ff2727;
 
     .links {
       height: calc(100vh - 210px);
+
+      ul {
+        height: calc(100vh - 310px);
+      }
     }
   }
 }
@@ -50,5 +71,14 @@ $error: #ff2727;
 @media screen and (max-width: 315px) {
   * {
     font-size: 13px;
+  }
+
+  #app {
+    form {
+      input,
+      button {
+        height: 35px;
+      }
+    }
   }
 }
