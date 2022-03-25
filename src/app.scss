@@ -38,7 +38,7 @@ $button-hover: #ba7002;
 
 #app {
   font-family: "Lato", sans-serif;
-  height: 100vh;
+  min-height: 100vh;
   background: #001b40;
 }
 .v-popper--theme-tooltip .v-popper__inner {
@@ -79,6 +79,15 @@ $button-hover: #ba7002;
       button {
         height: 35px;
       }
+    }
+  }
+}
+
+@media screen and (max-height: 500px) {
+  #app {
+    footer {
+      position: static;
+      margin-top: 70px;
     }
   }
 }
