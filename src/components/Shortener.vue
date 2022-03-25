@@ -51,7 +51,7 @@ export default defineComponent({
     const shorten = async () => {
       try {
         const { data } = await axios.post("/shorten", {
-          long_url: url.value,
+          long_url: url.value.trim(),
         });
 
         setShortenedLinks({

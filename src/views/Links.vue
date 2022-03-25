@@ -82,7 +82,7 @@ export default defineComponent({
 
   ul {
     padding-right: 5px;
-    margin: auto;
+    margin: 0 auto 10px;
     height: calc(100vh - 260px);
     overflow: auto;
     width: min(550px, 95%);
@@ -115,6 +115,10 @@ export default defineComponent({
       }
     }
   }
+}
+
+footer {
+  display: none !important;
 }
 
 @keyframes delete {
