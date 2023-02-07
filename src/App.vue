@@ -12,7 +12,8 @@ import { onBeforeMount } from "vue";
 export default defineComponent({
   setup() {
     onBeforeMount(() => {
-      localStorage.setItem("links", "[]");
+      const localStorageLinks = JSON.parse(localStorage.getItem("links"));
+      if (localStorageLinks.length === 0) localStorage.setItem("links", "[]");
     });
   },
   components: {
